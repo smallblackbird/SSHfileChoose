@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FileChooser介绍
 
 选择文件路径的的插件，一般运用于设置缓存路径、选择文件等地方，代码简单，几个类，库没有导入其他的第三方包，干净整洁。
@@ -64,3 +65,6 @@ dependencies {
 ### Known Issues
 If you have any questions/queries/Bugs/Hugs please mail @
 taohailili@gmail.com
+=======
+# SSHfileChoose
+>>>>>>> 1cf7d0151f5aba634f80fb374a5d1f6401bbd410
