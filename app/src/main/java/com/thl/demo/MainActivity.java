@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private static String path = "";
     private static final String CDPHONE = "echo 0 > /sys/devices/platform/vcc5v0-host/state";//写数据到U盘
     private static final String CDWINDOW = "echo 1 > /sys/devices/platform/vcc5v0-host/state";//从U盘读数据到电脑
+    private static final String RESTART = "cd /mnt/soklck&&./server";//重启服务器
+   // private static final String RESTART = "cd /mnt/soklck";//重启服务器
     private TextView result;
 
     public class TestConnectionThread extends Thread{
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                            });
                        }
                    }).start();
+
                 }
             });
             findViewById(R.id.cd_window).setOnClickListener(new View.OnClickListener() {
@@ -156,6 +159,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        findViewById(R.id.restartSSH).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public synchronized void run() {
+                        sshconnection.init("root", "123456", "192.168.1.15", "22");
+                        sshconnection.shellInit();
+                        final ArrayList<String> msg=sshconnection.shellCommand(RESTART);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this,"命令发送成功!",Toast.LENGTH_SHORT).show();
+                                result.setText("");
+                                for(String i:msg){
+                                    result.append(i);
+                                }
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
         findViewById(R.id.btn_self).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

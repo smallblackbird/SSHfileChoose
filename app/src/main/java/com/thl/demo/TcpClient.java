@@ -126,7 +126,7 @@ public class TcpClient {
                 } else if((file.length()>=1024*100)&&(file.length()<1024*1000)){
                     buf = new byte[1024*3];
                 }else if((file.length()>=1024*1000)&&(file.length()<1024*10000)) {
-                    buf = new byte[1024 * 30];
+                    buf = new byte[1024*50];
                 }else {
                     buf = new byte[1024 * 50];
                 }
@@ -135,6 +135,7 @@ public class TcpClient {
                     Log.d(TAG, "readbyte" + readbyte);
                     mOutputStream.write(buf);
                     mOutputStream.flush();
+                    sleep(10);
                 }
                 //mOutputStream.flush();
 

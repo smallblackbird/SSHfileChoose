@@ -69,14 +69,15 @@
         android:id="@+id/close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:textSize="20dp"
         android:text="关闭连接"/>
 
     <Button
         android:id="@+id/loginSSH"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:textSize="20dp"
         android:text="登录ssh"/>
 
@@ -102,6 +103,14 @@
             android:text="切换U盘读取"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/restartSSH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="重启ssh"/>
 
     <Button
         android:id="@+id/btn_self"
